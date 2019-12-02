@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 64158,
+  "expoServerNgrokUrl": "https://ur-pdf.anonymous.picture-map.exp.direct",
+  "packagerNgrokUrl": "https://packager.ur-pdf.anonymous.picture-map.exp.direct",
+  "ngrokPid": 64182,
+  "webpackServerPort": null
+}
