@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import PlaceItem from '../components/PlaceItem';
 
 const PlacesDetailScreen = props => {
   return (
@@ -7,6 +8,12 @@ const PlacesDetailScreen = props => {
       <Text>PlacesDetailScreen</Text>
     </View>
   );
+};
+
+PlacesDetailScreen.navigationOptions = navData => {
+  return {
+    headerTitle: navData.navigation.getParam('placeTitle')
+  }
 };
 
 const styles = StyleSheet.create({});

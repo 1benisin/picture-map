@@ -3,6 +3,6 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "ur-pdf",
+  "urlRandomness": "mk-tyc",
   "https": false
 }
