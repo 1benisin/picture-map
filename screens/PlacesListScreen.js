@@ -1,13 +1,19 @@
-import React from 'react';
-import { FlatList, View, Text, StyleSheet, Platform } from 'react-native';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { FlatList, View, Text, StyleSheet, Platform } from "react-native";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useSelector, useDispatch } from "react-redux";
 
-import HeaderButton from '../components/HeaderButton';
-import PlaceItem from '../components/PlaceItem';
+import HeaderButton from "../components/HeaderButton";
+import PlaceItem from "../components/PlaceItem";
+import * as placesActions from "../store/places-actions";
 
 const PlacesListScreen = props => {
   const places = useSelector(state => state.places.places);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(placesActions.loadPlaces());
+  }, [dispatch]);
 
   return (
     <FlatList
@@ -19,7 +25,7 @@ const PlacesListScreen = props => {
           title={itemData.item.title}
           address={null}
           onSelect={() => {
-            props.navigation.navigate('PlaceDetail', {
+            props.navigation.navigate("PlaceDetail", {
               placeTitle: itemData.item.title,
               placeId: itemData.item.id
             });
@@ -32,17 +38,19 @@ const PlacesListScreen = props => {
 
 PlacesListScreen.navigationOptions = navData => {
   return {
-    headerTitle: 'All Places',
-    headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
-      <Item
-        title='Add Place'
-        iconName={Platform.OS == 'android' ? 'md-add' : 'ios-add'}
-        onPress={() => {
-          navData.navigation.navigate('NewPlace');
-        }}
-      />
-    </HeaderButtons>
-  }
+    headerTitle: "All Places",
+    headerRight: (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Add Place"
+          iconName={Platform.OS == "android" ? "md-add" : "ios-add"}
+          onPress={() => {
+            navData.navigation.navigate("NewPlace");
+          }}
+        />
+      </HeaderButtons>
+    )
+  };
 };
 
 const styles = StyleSheet.create({});
