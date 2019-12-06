@@ -4,6 +4,7 @@ export const ADD_PLACE = 'ADD_PLACE';
 export const SET_PLACES = 'SET_PLACES';
 
 import { fetchPlaces, insertPlace } from '../helpers/db';
+import ENV from '../env';
 
 export const addPlace = (title, image, location) => {
   return async dispatch => {
